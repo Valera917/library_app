@@ -35,5 +35,5 @@ require 'faker'
 #   sql = "INSERT INTO users (name, email) VALUES (#{Faker::Name.unique.name}, #{Faker::Internet.unique.email})"
 #   ActiveRecord::Base.connection.execute(sql)
 # end
-
+sql = ""
 puts "Seed data has been created successfully"
