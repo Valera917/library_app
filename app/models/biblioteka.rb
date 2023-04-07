@@ -11,7 +11,8 @@ class Biblioteka < ApplicationRecord
     50.times do |i|
       Biblioteka.create(
         name: "Library #{i}",
-        address: "Address #{i}"
+        address: "Address #{i}",
+        phone: "#{Faker::PhoneNumber.phone_number}"
       )
     end
   end

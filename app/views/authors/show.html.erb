@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h4 class="mt-4 mb-4 display-4">Show details of author <%= @author.id %></h4>
+  </div>
+  <div class="row justify-content-center">
+    <table class="table">
+      <tbody>
+      <tr>
+        <th>Name:</th>
+        <td><%= @author.name %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <!-- Display books in a list with Bootstrap styles -->
+    <div>
+      <h3>Books by <%= @author.name %></h3>
+      <ul class="list-group">
+        <% @author.books.each do |book| %>
+          <li class="list-group-item"><%= book.title %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <%= link_to "Back to list", root_path %>
+</div>

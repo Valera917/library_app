@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h4 class="mt-4 display-4">Listing Libraries</h4>
+  </div>
+  <%= link_to 'Create Book', new_biblioteka_path %>
+  <div class="row justify-content-center">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col" colspan="3">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @libraries.each do |library| %>
+        <tr>
+          <td><%= library.name %></td>
+          <td><%= link_to 'Show', biblioteka_path(library.id) %></td>
+          <td><%= button_to 'Edit', edit_biblioteka_path(library), method: 'get'%></td>
+          <td><%= button_to 'Remove', biblioteka_path(library), method: 'delete', data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+      </table>
+  </div>
+  <div class="p-3 mb-2 bg-light text-dark">
+    <span class="text-info font-weight-bold">Welcome! </span>
+    Add Biblioteka
+  </div>
+</div>
