@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :users
   resources :authors
   resources :bibliotekas
-  root "reader_cards#index"
+  root "home#index"
 end
