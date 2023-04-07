@@ -1,2 +1,23 @@
-<h1>ReaderCards#show</h1>
-<p>Find me in app/views/reader_cards/show.html.erb</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <h4 class="mt-4 mb-4 display-4">Show details of Reader Card <%= @reader_card.id %></h4>
+  </div>
+  <div class="row justify-content-center">
+    <table class="table">
+      <tbody>
+      <tr>
+        <th>User:</th>
+        <td><%= @reader_card.user_id %></td>
+        <th>Biblioteka:</th>
+        <td><%= @reader_card.biblioteka_id %></td>
+        <th>Date issued:</th>
+        <td><%= @reader_card.date_issued %></td>
+        <th>Date expired:</th>
+        <td><%= @reader_card.date_expired %></td>
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <%= link_to "Back to list", root_path %>
+</div>

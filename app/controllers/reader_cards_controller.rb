@@ -14,9 +14,9 @@ class ReaderCardsController < ApplicationController
   def update
     @reader_card = ReaderCard.find(params[:id])
 
-    @reader_card.update(library_params)
+    @reader_card.update(reader_card_params)
 
-    redirect_to author_path(@reader_card)
+    redirect_to reader_card_path(@reader_card)
   end
 
   def new
@@ -24,7 +24,7 @@ class ReaderCardsController < ApplicationController
   end
 
   def create
-    @reader_card = ReaderCard.create(author_params)
+    @reader_card = ReaderCard.create(reader_card_params)
 
     redirect_to root_path
   end
@@ -37,7 +37,7 @@ class ReaderCardsController < ApplicationController
   end
 
   private
-  def author_params
-    params.require(:reader_card).permit(:name)
+  def reader_card_params
+    params.require(:reader_card).permit(:user_id, :biblioteka_id, :date_issued, :date_expired)
   end
 end
