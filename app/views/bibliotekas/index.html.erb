@@ -2,13 +2,26 @@
   <div class="row justify-content-center">
     <h4 class="mt-4 display-4">Listing Libraries</h4>
   </div>
-  <%= link_to 'Create Book', new_biblioteka_path %>
+  <%= link_to 'Create Library', new_biblioteka_path %>
   <div class="row justify-content-center">
     <table class="table table-bordered">
       <thead>
       <tr>
+      <div id = "mySearch">
+          <%= search_form_for @q do |f| %>
+              <%= f.label :name_cont, "Search by Name" %>
+              <%= f.search_field :name_cont %>
+              <%= f.submit "Search", class: 'btn btn-primary ' %>
+          <% end %>
+      </div>
         <th scope="col">Title</th>
         <th scope="col" colspan="3">Action</th>
+          <%sort_count = "book_count" if @up %>
+          <%sort_count = "book_count_desc" if !@up %>
+          <%sort_genre = "genre_count" if @up_genre %>
+          <%sort_genre = "genre_count_desc" if !@up_genre %>
+          <th > <%= link_to "Number of Books", bibliotekas_path(sort: sort_count) %></th>
+          <th > <%= link_to "Number of Genres", bibliotekas_path(sort: sort_genre ) %></th>
       </tr>
       </thead>
       <tbody>
@@ -18,11 +31,14 @@
           <td><%= link_to 'Show', biblioteka_path(library.id) %></td>
           <td><%= button_to 'Edit', edit_biblioteka_path(library), method: 'get'%></td>
           <td><%= button_to 'Remove', biblioteka_path(library), method: 'delete', data: { confirm: 'Are you sure?' } %></td>
+            <td><%= library.books.count %></td>
+            <td><%= library.books.select(:genre_id).distinct.count %></td>
       <% end %>
       </table>
   </div>
-  <div class="p-3 mb-2 bg-light text-dark">
-    <span class="text-info font-weight-bold">Welcome! </span>
-    Add Biblioteka
-  </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><%= will_paginate @libraries, class: 'page-link' %></li>
+        </ul>
+    </nav>
 </div>
